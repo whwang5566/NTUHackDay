@@ -17,6 +17,10 @@ function Awake()
 //    zug_03 = transform.Find("achterbahn_zug3").gameObject;    
 
     zug_01_anim = zug_01.GetComponent(Animation);
+    //set animation speed
+    for (var state : AnimationState in zug_01_anim) {
+		state.speed = 1.4;
+	}
 //    zug_02_anim = zug_02.GetComponent(Animation);
 //    zug_03_anim = zug_03.GetComponent(Animation);
 }
@@ -36,7 +40,7 @@ function Update()
 	if (Input.GetKeyDown (KeyCode.Space)) {
 		//get game manager
 		var managerScript:gameManager = manager.GetComponent("gameManager");
-		managerScript.gameStart = true;
+		managerScript.startGame();
 		
 		//if( !zug_01_anim.IsPlaying("fahren_loop") )
 		zug_01_anim.Play("fahren_loop");        
